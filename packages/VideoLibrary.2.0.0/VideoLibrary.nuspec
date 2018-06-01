@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>VideoLibrary</id>
+    <version>2.0.0</version>
+    <title>libvideo</title>
+    <authors>Bar Arnon</authors>
+    <owners>Bar Arnon</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/i3arnon/libvideo/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/i3arnon/libvideo</projectUrl>
+    <iconUrl>https://github.com/i3arnon/libvideo/raw/master/icons/icon_128.png</iconUrl>
+    <description>libvideo is a fast, clean way to download YouTube videos. It is fully portable and has no dependencies.
+
+Find us on GitHub at https://github.com/i3arnon/libvideo</description>
+    <releaseNotes>Move to .NET Standard</releaseNotes>
+    <copyright>Copyright 2018 Bar Arnon</copyright>
+    <tags>youtube youtubeextractor libvideo lib libs video videos library libraries download extract get vimeo scrape scraping downloader extractor getter scraper youtubeextract videolibrary library winrt wp windows phone pcl portable class library .net framework core xamarin mono monotouch xamarin.ios ios xamarin.android android</tags>
+    <repository type="git" url="https://github.com/i3arnon/libvideo" />
+    <dependencies>
+      <group targetFramework=".NETStandard1.1">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

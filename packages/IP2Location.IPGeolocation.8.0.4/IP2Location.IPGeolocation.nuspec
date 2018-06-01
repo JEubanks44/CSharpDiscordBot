@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>IP2Location.IPGeolocation</id>
+    <version>8.0.4</version>
+    <title>IP2Location IP Geolocation</title>
+    <authors>IP2Location.com</authors>
+    <owners>IP2Location.com</owners>
+    <projectUrl>https://www.ip2location.com/software/dot-net-component</projectUrl>
+    <iconUrl>https://www.ip2location.com/images/ip_logo_64.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Discover your visitors’ geolocation information such as country, region, city, latitude &amp; longitude, ZIP codes, time zone and more from an IP address. It support both the IPv4 and IPv6 address. Below are the complete geolocation information that you can query using this component.
+
+* Country
+* Region
+* City
+* Latitude &amp; Longitude
+* Time zone
+* ZIP code
+* ISP
+* Domain
+* Netspeed
+* Area code
+* Weather information
+* Mobile information
+* Elevation
+* Usage Type
+
+This component works together with IP2Location BIN data file. You can download the free BIN data file at http://lite.ip2location.com or a commercial BIN data (high accuracy) at http://www.ip2location.com.
+
+Please take note that this free version will having random 5 seconds delay on query. You may purchase a commercial license at https://www.ip2location.com/software/dot-net-component to remove this limitation.
+</description>
+    <copyright>Copyright 2017 IP2Location.com</copyright>
+    <summary>Discover your visitors geolocation information such as country, region, city, lat/long, ZIP codes, timezone and more using IP2Location LITE edition open source database at http://lite.ip2location.com/</summary>
+    <tags>ip2location .net ip geolocation</tags>
+  </metadata>
+</package>

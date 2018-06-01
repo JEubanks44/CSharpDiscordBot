@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Facepunch.Steamworks</id>
+    <version>0.7.5</version>
+    <authors>Garry Newman</authors>
+    <owners>Garry Newman</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/Facepunch/Facepunch.Steamworks/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Facepunch/Facepunch.Steamworks</projectUrl>
+    <iconUrl>https://avatars2.githubusercontent.com/u/3371040</iconUrl>
+    <description>Package Description</description>
+    <tags>facepunch steam unity steamworks valve</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework3.5" />
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

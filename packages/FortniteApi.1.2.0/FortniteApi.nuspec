@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>FortniteApi</id>
+    <version>1.2.0</version>
+    <authors>AeonLucid</authors>
+    <owners>AeonLucid</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/AeonLucid/FortniteApi/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/AeonLucid/FortniteApi</projectUrl>
+    <iconUrl>https://i.imgur.com/hJPVKUu.jpg</iconUrl>
+    <description>An unofficial C# client library for the unofficial Fortnite API.</description>
+    <copyright>AeonLucid</copyright>
+    <tags>fortnite fortniteapi epic games</tags>
+    <repository type="git" url="https://github.com/AeonLucid/FortniteApi" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Flurl.Http" version="2.1.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

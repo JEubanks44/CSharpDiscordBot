@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Cookie</id>
+    <version>2.9.0</version>
+    <authors>Yucked</authors>
+    <owners>Yucked</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/Yucked/Cookie/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Yucked/Cookie</projectUrl>
+    <iconUrl>https://i.imgur.com/bB1H025.png</iconUrl>
+    <description>🍪 -Wrapper for Giphy, Steam, Cleverbot, etc. Fully asynchronous and compatible with Net FX and Core.</description>
+    <releaseNotes>Code Cleanup.</releaseNotes>
+    <copyright>Copyright 2017 Yucked</copyright>
+    <tags>Cookie, Giphy, Steam, FOAAS, Cleverbot</tags>
+    <repository type="Github" url="https://github.com/Yucked/Cookie" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

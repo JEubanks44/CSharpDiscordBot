@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Steam.Models</id>
+    <version>3.0.8</version>
+    <authors>Justin Skiles</authors>
+    <owners>Justin Skiles</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/babelshift/Steam.Models/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/babelshift/Steam.Models</projectUrl>
+    <description>Contains classes that are used as data transports between various application, business, and data layers for Steam related APIs.</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>
