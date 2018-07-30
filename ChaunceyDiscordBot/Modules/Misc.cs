@@ -144,8 +144,8 @@ namespace ChaunceyDiscordBot.Modules
             var botMessage = await Context.Channel.SendMessageAsync("Pinging...");
             var ping = (botMessage.Timestamp - messageTime).TotalMilliseconds;
            
-            var speech = await Context.Channel.SendMessageAsync("Ping: " + ping.ToString() + " milliseconds");
-            synth.Speak(speech.Content);
+           
+            
         }   
 
         [Command("Talk")]

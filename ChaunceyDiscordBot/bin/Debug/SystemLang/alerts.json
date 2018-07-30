@@ -1,7 +1,4 @@
 {
-  "TEST": "Hello World",
-  "WELCOME_&NAME_&BOTNAME": "Hello, {0}. My name is {1}, how may I help you?",
-  "SECRET": "The Secret is `123`",
   "YOUTUBE_API_KEY": "AIzaSyAXmgM31elu56Jk3g8c9AhF7ieqy6v1GAE",
   "GIPHY_API_KEY": "jBEyEnGSAxO5YZAxoz2TSVXFreL2smTY",
   "STEAM_API_KEY": "D1E89D325F5F470CD0E21843E059159E",

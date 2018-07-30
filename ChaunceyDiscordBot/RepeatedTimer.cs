@@ -17,6 +17,7 @@ using Cookie;
 using System.Text.RegularExpressions;
 namespace ChaunceyDiscordBot
 {
+    
     public static class RepeatedTimer
     {
         private static Timer loopingTimer;
@@ -47,6 +48,7 @@ namespace ChaunceyDiscordBot
             return Task.CompletedTask;
         }
 
+        
         private static async void OnTimerTicked(object sender, ElapsedEventArgs e)
         {
 
@@ -74,7 +76,7 @@ namespace ChaunceyDiscordBot
                                 steamID = DataStorage.getSteamID(userID).Result;
                             }
 
-                            if (!user.IsBot)
+                            if (!user.IsBot && userID != null)
                             {
                                 var gameResponse = steamInterface.GetPlayerSummaryAsync(Convert.ToUInt64(steamID));
                                 string game = gameResponse.Result.Data.PlayingGameName;
@@ -161,4 +163,5 @@ namespace ChaunceyDiscordBot
 
         }
     }
+    
 }

@@ -15,7 +15,7 @@ namespace ChaunceyDiscordBot
     //Not Yet Implemented or Completed
     public class  DataStorage : ModuleBase<SocketCommandContext>
     {
-        static SqlConnection conn = new SqlConnection(ConfigurationManager.AppSettings["connectionString"]);
+        static SqlConnection conn = new SqlConnection("Data Source=JOSEPHSPC\\JESERVER;Initial Catalog=DiscordBot;Integrated Security=True");
         public DataStorage()
         {
             
@@ -28,6 +28,9 @@ namespace ChaunceyDiscordBot
             else
             {
                 Console.WriteLine("Connection to Database Successful");
+                Console.WriteLine("Connection String: " + conn.ConnectionString);
+                Console.WriteLine("Database: " + conn.Database);
+                Console.WriteLine("Data Source: " + conn.DataSource);
             }
             
             /*
@@ -72,6 +75,7 @@ namespace ChaunceyDiscordBot
 
         public bool checkIDExists(string ID)
         {
+
             conn.Close();
             conn.Open();
             SqlCommand checkID = new SqlCommand("SELECT COUNT(*) FROM UserInfo WHERE ([userID] = @userID)");
@@ -82,8 +86,8 @@ namespace ChaunceyDiscordBot
             checkID.Connection.Close();
             if(check > 0)
             {
-                
-                
+
+                Console.WriteLine("User Already Exists");
                 return true;
 
             }
@@ -100,7 +104,7 @@ namespace ChaunceyDiscordBot
 
         public void setID(string ID)
         {
-            if (!checkIDExists(ID))
+            if (checkIDExists(ID))
             {
 
             }

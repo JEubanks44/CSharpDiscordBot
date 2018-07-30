@@ -199,8 +199,8 @@ G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\Syst
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\System.Reflection.Metadata.xml
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\YoutubeExtractor.xml
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.csproj.App.config
-G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.csprojResolveAssemblyReference.cache
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.exe.config
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.csproj.CoreCompileInputs.cache
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.exe
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.pdb
+G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.csproj.CopyComplete

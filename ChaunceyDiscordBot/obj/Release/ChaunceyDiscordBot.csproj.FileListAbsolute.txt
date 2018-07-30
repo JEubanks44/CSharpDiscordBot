@@ -203,3 +203,4 @@ G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Release\Ch
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Release\ChaunceyDiscordBot.csproj.CoreCompileInputs.cache
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Release\ChaunceyDiscordBot.exe
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Release\ChaunceyDiscordBot.pdb
+G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Release\ChaunceyDiscordBot.csprojResolveAssemblyReference.cache

@@ -186,7 +186,6 @@ namespace ChaunceyDiscordBot.Modules
                 embed.WithImageUrl(gameImage);
 
                 await Context.Channel.SendMessageAsync("", false, embed);
-
             }
         } 
         
