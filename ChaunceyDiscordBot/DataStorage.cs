@@ -15,12 +15,12 @@ namespace ChaunceyDiscordBot
     //Not Yet Implemented or Completed
     public class  DataStorage : ModuleBase<SocketCommandContext>
     {
-        static SqlConnection conn = new SqlConnection("Data Source=JOSEPHSPC\\JESERVER;Initial Catalog=DiscordBot;Integrated Security=True");
+        static SqlConnection conn = new SqlConnection("Data Source=JOSEPHSPC\\JESERVER;Initial Catalog=DiscordBot;Integrated Security=True"); //Creates a hardcoded connection the database on my local machine
         public DataStorage()
         {
             
             
-
+            //Check the Connection is successful
             if(conn == null)
             {
                 Console.WriteLine("Connection to Database Failed");
@@ -32,58 +32,21 @@ namespace ChaunceyDiscordBot
                 Console.WriteLine("Database: " + conn.Database);
                 Console.WriteLine("Data Source: " + conn.DataSource);
             }
-            
-            /*
-            string provider = ConfigurationManager.AppSettings["provider"];
-            string connectionString = ConfigurationManager.AppSettings["connectionString"];
-            DbProviderFactory factory = DbProviderFactories.GetFactory(provider);
-
-            using (DbConnection connection = factory.CreateConnection())
-            {
-                if (connection == null)
-                {
-                    Console.WriteLine("ConnectionError");
-                    Console.ReadLine();
-                }
-
-                connection.ConnectionString = connectionString;
-
-                connection.Open();
-
-                DbCommand command = factory.CreateCommand();
-
-                if (command == null)
-                {
-                    Console.WriteLine("Command Error");
-                    Console.ReadLine();
-                }
-
-                command.Connection = connection;
-                command.CommandText = "Select * From UserInfo";
-
-                using (DbDataReader dataReader = command.ExecuteReader())
-                {
-                    while (dataReader.Read())
-                    {
-                        Console.WriteLine($"{dataReader["realName"]}");
-                    }
-                }
-                */
-                conn.Close();
+            conn.Close();
              
         }
 
-        public bool checkIDExists(string ID)
+        //Checks if a user ID exists, used as a check for all method accessing the database
+        public bool checkIDExists(string ID) 
         {
 
-            conn.Close();
+            conn.Close(); //Closes and reopens the connection as a safety precaution to avoid errors
             conn.Open();
-            SqlCommand checkID = new SqlCommand("SELECT COUNT(*) FROM UserInfo WHERE ([userID] = @userID)");
+            SqlCommand checkID = new SqlCommand("SELECT COUNT(*) FROM UserInfo WHERE ([userID] = @userID)"); //Returns 1 if the userID exists in the database currently
             
             checkID.Connection = conn;
-            checkID.Parameters.AddWithValue("@userID", ID);
+            checkID.Parameters.AddWithValue("@userID", ID); 
             int check = (int)checkID.ExecuteScalar();
-            checkID.Connection.Close();
             if(check > 0)
             {
 
@@ -102,6 +65,7 @@ namespace ChaunceyDiscordBot
             
         }
 
+        //Method to set the users ID in the database if it does not exist already
         public void setID(string ID)
         {
             if (checkIDExists(ID))
@@ -129,6 +93,7 @@ namespace ChaunceyDiscordBot
 
         }
 
+        //Allows storage of a Real Name for the user for servers that would like to be able to access users by known personal names
         public void setRealName(string ID, string realName)
         {
             conn.Open();
@@ -156,6 +121,7 @@ namespace ChaunceyDiscordBot
             conn.Close();
         }
 
+        //Stores the users current Discord Nickname seperate from their actual discord ID
         public void setNickName(string ID, string nickName)
         {
             conn.Open();
@@ -184,6 +150,23 @@ namespace ChaunceyDiscordBot
             conn.Close();
         }
 
+        //Last FM account user name for access to the Last.fm API
+        public void setLastFM(string ID, string userName)
+        {
+            conn.Open();
+            SqlCommand updateLastFMName = new SqlCommand("UPDATE UserInfo SET lastFMName = @NAME WHERE userID = @ID");
+            updateLastFMName.Connection = conn;
+
+            if(checkIDExists(ID))
+            {
+                updateLastFMName.Parameters.AddWithValue("@ID", ID);
+                updateLastFMName.Parameters.AddWithValue("@NAME", userName);
+                Console.WriteLine("Updated UserID: " + ID + "'s Last.FM Usernameto: " + userName);
+                updateLastFMName.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
+
         public string getNickName(string ID)
         {
             conn.Open();
@@ -195,6 +178,7 @@ namespace ChaunceyDiscordBot
             return nickName;
         }
 
+        //Method to add points on successful bot commands to a users profile
         public void addPoints(string ID, int points)
         {
             int userPoints = getPoints(ID);
@@ -241,6 +225,7 @@ namespace ChaunceyDiscordBot
             return level;
         }
 
+        //Check if the amount of points a user has earned warrants a level up
         public bool checkLevelUp(string ID)
         {
             if(!checkIDExists(ID))
@@ -262,7 +247,8 @@ namespace ChaunceyDiscordBot
             }
             
         }
-
+        
+        //Sets the users level in the database upon reaching a certain point threshold
         public void levelUp(string ID)
         {
             int levelNew = getLevel(ID) + 1;
@@ -283,6 +269,7 @@ namespace ChaunceyDiscordBot
             conn.Close();
         }
 
+        //Allows the user to store their unique steam ID to access the personal Steam API
         public void setSteamID(string ID, string steamID)
         {
             if (conn.State == System.Data.ConnectionState.Open)
@@ -314,6 +301,7 @@ namespace ChaunceyDiscordBot
             
         }
 
+        //Sets the current game that is being played by a user, implemented in the polling class RepeatedTimer.cs
         public static void setNowPlaying(string ID, string game)
         {
             if (conn.State == System.Data.ConnectionState.Open)

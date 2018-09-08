@@ -14,11 +14,12 @@ using SteamWebAPI2.Interfaces;
 using SteamWebAPI2.Models;
 using SteamWebAPI2.Exceptions;
 using SteamWebAPI2.Utilities;
+
+//This Class is bot commands to communicate with the Steam API
 namespace ChaunceyDiscordBot.Modules
 {
     public class Steam : ModuleBase<SocketCommandContext>
     {
-        private System.Threading.Timer timer;
         DataStorage ds = new DataStorage();
         SteamUser steamInterface = new SteamUser(Utilities.GetAlert("STEAM_API_KEY"));
         SteamStore steamStoreInterface = new SteamStore();
@@ -26,13 +27,11 @@ namespace ChaunceyDiscordBot.Modules
         CookieClient cookieClient = new CookieClient(new CookieConfig()
         {
             SteamKey = Utilities.GetAlert("STEAM_API_KEY")
-
         });
 
         public async Task checkLevel(string ID)
         {
             bool levelUp = ds.checkLevelUp(ID);
-
             if (levelUp)
             {
                 embed.WithTitle("LEVEL UP!");

@@ -13,6 +13,8 @@ using Google.Apis.YouTube.v3.Data;
 using Discord.Commands;
 using Discord;
 using Discord.WebSocket;
+
+//Implements the YoutubeData API to retrieve videos using !yt command
 namespace ChaunceyDiscordBot.Modules
 {
     public class YouTube : ModuleBase<SocketCommandContext>
@@ -50,6 +52,8 @@ namespace ChaunceyDiscordBot.Modules
             return youtubeService;
         }
 
+
+        //Search Youtube by Keyword (Standard Search)
         [Alias("youtube", "tube", "ytkey")]
         [Command("yt")]
         public async Task searchKeyword([Remainder]string message)
@@ -75,6 +79,8 @@ namespace ChaunceyDiscordBot.Modules
                 Console.WriteLine(result.Id.VideoId);
             }
             String URL = "https://www.youtube.com/watch?v=";
+            //The Youtube API often fails to return a video in the first result slot, therefore it is a null and no video will appear in the chat when invoked.
+            //This simply checks if the first video is null and if so reverts to using the second video result returned by the API
             if (videos[0] != null)
             {
                 URL += videos[0];

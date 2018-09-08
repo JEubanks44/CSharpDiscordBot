@@ -28,7 +28,7 @@ namespace ChaunceyDiscordBot
         static void Main(string[] args)
         => new Program().StartAsync().GetAwaiter().GetResult(); //Start Async funtion instead of main
 
-        public async Task StartAsync()
+        public async Task StartAsync() //Begins the main loop of the program
         {
             var services = ConfigureServices();
             
@@ -43,7 +43,7 @@ namespace ChaunceyDiscordBot
             });
 
             _client.Log += Log;
-            _client.Ready += RepeatedTimer.StartTimer;
+            _client.Ready += RepeatedTimer.StartTimer; //Starts the timer polling class
             await _client.LoginAsync(TokenType.Bot, Config.bot.token);  //Logs in bot
             await _client.StartAsync(); //Starts bot
             Global.Client = _client;

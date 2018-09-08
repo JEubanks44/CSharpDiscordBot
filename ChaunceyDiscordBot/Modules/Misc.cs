@@ -12,6 +12,8 @@ using System.Net.NetworkInformation;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
 using Discord.Audio;
+
+//Misc bot Commands
 namespace ChaunceyDiscordBot.Modules
 {
     public class Misc : ModuleBase<SocketCommandContext>  //Inherits from the modulbase discord class

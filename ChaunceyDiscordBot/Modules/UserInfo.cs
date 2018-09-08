@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 using Discord.WebSocket;
+//This Class Provides Bot Commands to allow setting of information in the database
 namespace ChaunceyDiscordBot.Modules
 {
     public class UserInfo : ModuleBase<SocketCommandContext> 
@@ -51,5 +52,15 @@ namespace ChaunceyDiscordBot.Modules
             ds.setSteamID(userID, steamID);
             await Context.Channel.SendMessageAsync("Steam ID set");
         }
+
+        [Alias("setlfm", "setLFM")]
+        [Command("setLastFM")]
+        public async Task setLastFM([Remainder] string userName)
+        {
+            string userID = Context.User.Id.ToString();
+            ds.setLastFM(userID, userName);
+            await Context.Channel.SendMessageAsync("Last FM ID set");
+        }
+        
     }
 }

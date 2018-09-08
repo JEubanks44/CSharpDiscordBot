@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
+
+//Bot Commands for mentioning other users quickly
 namespace ChaunceyDiscordBot.Modules
 {
     public class Mention : ModuleBase<SocketCommandContext>

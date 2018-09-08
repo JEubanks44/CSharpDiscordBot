@@ -15,15 +15,17 @@ using Cookie.Steam;
 using Cookie.Steam.Models;
 using Cookie;
 using System.Text.RegularExpressions;
+
+//This class contains the timer based system that constantly polls for changes in key statuses for individual users
 namespace ChaunceyDiscordBot
 {
     
     public static class RepeatedTimer
     {
-        private static Timer loopingTimer;
-        private static SocketTextChannel channel;
-        private static SteamUser steamInterface = new SteamUser(Utilities.GetAlert("STEAM_API_KEY"));
-        private static SteamStore steamStoreIntferace = new SteamStore();
+        private static Timer loopingTimer; //Timer
+        private static SocketTextChannel channel; //Channel in which the general channel will be stored if found
+        private static SteamUser steamInterface = new SteamUser(Utilities.GetAlert("STEAM_API_KEY")); //Steam API Profile Interface
+        private static SteamStore steamStoreIntferace = new SteamStore(); //Steam API Store Interface
        
         
         private static DataStorage ds = new DataStorage();
@@ -35,11 +37,11 @@ namespace ChaunceyDiscordBot
             });
         private static Dictionary<string, string> dict = new Dictionary<string, string> ();
         private static int count = 0;
-        public static Task StartTimer()
+        public static Task StartTimer() //Task to begin the timer upon application start
         {
             loopingTimer = new Timer()
             {
-                Interval = 2000,
+                Interval = 2000, //Timer checks for changes in status of all users every 2 seconds
                 AutoReset = true,
                 Enabled = true,
             };
@@ -52,7 +54,7 @@ namespace ChaunceyDiscordBot
         private static async void OnTimerTicked(object sender, ElapsedEventArgs e)
         {
 
-            if (Global.Client == null)
+            if (Global.Client == null) //Ensures the Discord Client is running before the timer begins
             {
                 
                 Console.WriteLine("Timer Ticked before Client was ready");
@@ -61,22 +63,20 @@ namespace ChaunceyDiscordBot
             //Console.WriteLine("Timer Cycle Complete");
             try
             {
-
-
-                if (count == 0)
+                if (count == 0) //On the first cycle of the timer get critical information and store it in the database
                 {
-                    foreach (var guild in Global.Client.Guilds)
+                    foreach (var guild in Global.Client.Guilds) //For every server currently running the bot
                     {
-                        foreach (var user in guild.Users)
+                        foreach (var user in guild.Users) //For every user in each server
                         {
-                            string userID = user.Id.ToString();
+                            string userID = user.Id.ToString(); //Retrieve userID
                             string steamID = null;
                             while (steamID == null && !user.IsBot)
                             {
-                                steamID = DataStorage.getSteamID(userID).Result;
+                                steamID = DataStorage.getSteamID(userID).Result; //Use userID to access users steam ID in the database
                             }
 
-                            if (!user.IsBot && userID != null)
+                            if (!user.IsBot && userID != null) //If the user is not a bot and the user exists
                             {
                                 var gameResponse = steamInterface.GetPlayerSummaryAsync(Convert.ToUInt64(steamID));
                                 string game = gameResponse.Result.Data.PlayingGameName;
@@ -84,24 +84,25 @@ namespace ChaunceyDiscordBot
                                 {
                                     game = "none";
                                 }
-                                DataStorage.setNowPlaying(userID, game);
+                                DataStorage.setNowPlaying(userID, game); //Set the nowPlaying value in the database for this user to the game received from the Steam API
                             }
                         }
                     }
                 }
                 else
                 {
-                    foreach (var guild in Global.Client.Guilds)
+                    foreach (var guild in Global.Client.Guilds) //For each server running the bot
                     {
-                        foreach (var chan in guild.TextChannels)
+                        foreach (var chan in guild.TextChannels) //For each channel in each server
                         {
-                            if (chan.Name == "general")
+                            if (chan.Name == "general") //Find the channel named general and assign its ID to a variable channel
                             {
                                 channel = chan;
                             }
                         }
-                        foreach (var user in guild.Users)
+                        foreach (var user in guild.Users) //For each user in the server
                         {
+                            //Retrieve the users steam ID from the database
                             string userID = user.Id.ToString();
                             string steamID = null;
                             while (steamID == null && !user.IsBot)
@@ -109,9 +110,10 @@ namespace ChaunceyDiscordBot
                                 steamID = DataStorage.getSteamID(userID).Result;
                             }
                             
+                            //If the user is not a bot
                             if (!user.IsBot)
                             {
-                                
+                                //Get the data from the Steam API for the game that the current Steam ID is playing
                                 var gameResponse = steamInterface.GetPlayerSummaryAsync(Convert.ToUInt64(steamID));
                                 string game = gameResponse.Result.Data.PlayingGameName;
                                 string gameID = gameResponse.Result.Data.PlayingGameId;
@@ -124,9 +126,11 @@ namespace ChaunceyDiscordBot
                                     game = "none";
 
                                 }
-                                string checkGame = DataStorage.getNowPlaying(userID);
+                                string checkGame = DataStorage.getNowPlaying(userID); //Gets the nowPlaying value from the database
                                 
-                                if (game.Trim() != checkGame.Trim())
+                                //If the game in the current users row for nowPlaying in the database does not match the report from the Steam API
+                                //A change has occured and the user is now playing a game so create an embed and post it to the channel as an alert.
+                                if (game.Trim() != checkGame.Trim()) 
                                 {
                                     
                                     embed.WithTitle(user.Username + " Is Now Playing: " + game);
@@ -154,7 +158,7 @@ namespace ChaunceyDiscordBot
                         }
                     }
                 }
-                count = 1;
+                count = 1; //Increments the count variable to ensure the initial check does not happen twice.
             }
             catch(Exception exc)
             {

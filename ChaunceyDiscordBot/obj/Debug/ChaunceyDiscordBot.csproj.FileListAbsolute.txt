@@ -204,3 +204,7 @@ G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\Chau
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.exe
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.pdb
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.csproj.CopyComplete
+G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\dotLastFm.dll
+G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\RestSharp.dll
+G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\RestSharp.xml
+G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.csprojAssemblyReference.cache
