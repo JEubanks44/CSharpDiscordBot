@@ -122,6 +122,9 @@
     <Reference Include="IdentityModel, Version=2.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\IdentityModel.2.10.0\lib\net452\IdentityModel.dll</HintPath>
     </Reference>
+    <Reference Include="IF.Lastfm.Core, Version=1.1.0.339, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Inflatable.Lastfm.1.1.0.339\lib\netstandard1.1\IF.Lastfm.Core.dll</HintPath>
+    </Reference>
     <Reference Include="IP2Location, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\IP2Location.IPGeolocation.8.0.4\lib\net40\IP2Location.dll</HintPath>
     </Reference>

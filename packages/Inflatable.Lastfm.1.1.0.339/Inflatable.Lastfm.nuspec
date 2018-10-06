@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Inflatable.Lastfm</id>
+    <version>1.1.0.339</version>
+    <title>Inflatable Last.fm SDK</title>
+    <authors>Rikki Tooley (@rikkilt)</authors>
+    <owners>Rikki Tooley (@rikkilt)</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/inflatablefriends/lastfm/blob/master/LICENCE.md</licenseUrl>
+    <projectUrl>https://github.com/inflatablefriends/lastfm</projectUrl>
+    <description>Portable Last.fm SDK for modern .NET platforms. Now with .NET Standard!</description>
+    <copyright>Copyright 2014 Inflatable Friends</copyright>
+    <tags>lastfm last.fm inflatable friends sdk api music metadata scrobble scrobbling portable netstandard</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+      <dependency id="System.Net.Http" version="4.3.0" />
+    </dependencies>
+  </metadata>
+</package>

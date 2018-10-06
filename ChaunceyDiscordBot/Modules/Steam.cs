@@ -69,7 +69,7 @@ namespace ChaunceyDiscordBot.Modules
             string profile = playerSummaryData.ProfileUrl;
             string userStatus = playerSummaryData.UserStatus.ToString();
             string createdDate = playerSummaryData.AccountCreatedDate.ToString();
-
+            
             string description = "";
             description += "Currently Playing: " + gamePlaying + "\n";
             description += "User Status: " + userStatus + "\n";

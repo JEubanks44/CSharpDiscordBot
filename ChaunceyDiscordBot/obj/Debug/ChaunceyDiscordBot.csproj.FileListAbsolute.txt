@@ -208,3 +208,4 @@ G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\dotL
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\RestSharp.dll
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\RestSharp.xml
 G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\obj\Debug\ChaunceyDiscordBot.csprojAssemblyReference.cache
+G:\ChaunceyTheDiscordButler\ChaunceyDiscordBot\ChaunceyDiscordBot\bin\Debug\IF.Lastfm.Core.dll

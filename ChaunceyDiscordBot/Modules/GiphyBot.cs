@@ -52,9 +52,9 @@ namespace ChaunceyDiscordBot.Modules
                 i = rand.Next(gifSearch.Pagination.Count);
                 Console.WriteLine(gifSearch.Pagination.Count);
                 Console.WriteLine(gifSearch.Datum[i].EmbedURL);
-                //embed.WithColor(255, 0, 0);
-                //embed.WithTitle("GIF: " + search);
-                //embed.WithThumbnailUrl(gifSearch.Datum[i].EmbedURL);
+                embed.WithColor(255, 0, 0);
+                embed.WithTitle("GIF: " + search);
+                embed.WithThumbnailUrl(gifSearch.Datum[i].EmbedURL);
                 var roles = Context.Guild.Roles;
                 await Context.Channel.SendMessageAsync(gifSearch.Datum[i].EmbedURL);
                 

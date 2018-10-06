@@ -49,14 +49,14 @@ namespace ChaunceyDiscordBot
             int check = (int)checkID.ExecuteScalar();
             if(check > 0)
             {
-
+                conn.Close();
                 Console.WriteLine("User Already Exists");
                 return true;
 
             }
             else
             {
-                
+                conn.Close();
                 return false;
                 
             }
@@ -329,9 +329,23 @@ namespace ChaunceyDiscordBot
             getNowPlaying.Parameters.AddWithValue("@ID", ID);
             string game = (string)getNowPlaying.ExecuteScalar();
             conn.Close();
-            return game;
+            return game.Trim();
         }
 
-        
+        public string getLastFM(string ID)
+        {
+            if (!checkIDExists(ID))
+            {
+                setID(ID);
+            }
+            conn.Open();
+            SqlCommand userName = new SqlCommand("SELECT lastFMName FROM UserInfo WHERE userID = @ID");
+            userName.Connection = conn;
+            userName.Parameters.AddWithValue("@ID", ID);
+            string user = (string)userName.ExecuteScalar();
+            conn.Close();
+            return user;
+        }
+            
     }
 }

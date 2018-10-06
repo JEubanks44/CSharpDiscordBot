@@ -48,7 +48,7 @@ namespace ChaunceyDiscordBot.Modules
         public async Task Date()
         {  
             String date = DateTime.Now.ToString();
-            embed.WithTitle("The Data and Time is: ");
+            embed.WithTitle("The Date and Time is: ");
             embed.WithDescription(date);
             embed.WithColor(red);
             await Context.Channel.SendMessageAsync("", false, embed);
