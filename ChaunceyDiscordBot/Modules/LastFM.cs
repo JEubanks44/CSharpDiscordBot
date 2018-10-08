@@ -81,8 +81,8 @@ namespace ChaunceyDiscordBot.Modules
             {
                 string userName = ds.getLastFM(Context.User.Id.ToString());
                 string textToSend = "";
-                var recentScrobbles = lfmClient.User.GetRecentScrobbles(userName,null,0,10).Result.Content;
-                var topArtists = lfmClient.User.GetTopArtists(userName, IF.Lastfm.Core.Api.Enums.LastStatsTimeSpan.Overall, 0, 5).Result.Content;
+                var recentScrobbles = lfmClient.User.GetRecentScrobbles(userName).Result.Content;
+                var topArtists = lfmClient.User.GetTopArtists(userName, 0).Result.Content;
                 var userInfo = lfmClient.User.GetInfoAsync(userName).Result.Content;
                 textToSend += "Recent Scrobbles\n";
                 foreach(var title in recentScrobbles)
