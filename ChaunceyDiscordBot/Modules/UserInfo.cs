@@ -42,7 +42,7 @@ namespace ChaunceyDiscordBot.Modules
                 nickName = Context.User.Username;
             }
             ds.setNickName(userID, nickName);
-            await Context.Channel.SendMessageAsync("Nick Name: " + nickName + "Added to database");
+            await Context.Channel.SendMessageAsync("Nick Name: " + nickName + " Added to database");
         }
 
         [Command("setSteamID")]

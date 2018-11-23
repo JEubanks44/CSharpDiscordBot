@@ -41,7 +41,7 @@ namespace ChaunceyDiscordBot
         {
             loopingTimer = new Timer()
             {
-                Interval = 2000, //Timer checks for changes in status of all users every 2 seconds
+                Interval = 2000, //Timer checks for changes in status of all users every 2 seconds (Can be faster, for slow for debugging purposes)
                 AutoReset = true,
                 Enabled = true,
             };

@@ -82,7 +82,7 @@ namespace ChaunceyDiscordBot
                 insertNewUserID.Parameters.AddWithValue("@POINTS", 0);
                 insertNewUserID.Parameters.AddWithValue("@REAL", "");
                 insertNewUserID.Parameters.AddWithValue("@NICK", "");
-
+                
                 Console.WriteLine("Adding New User ID: User ID added to database");
                 insertNewUserID.ExecuteNonQuery();
                 conn.Close();
@@ -105,8 +105,10 @@ namespace ChaunceyDiscordBot
             {
                 updateRealName.Parameters.AddWithValue("@ID", ID);
                 updateRealName.Parameters.AddWithValue("@REAL", realName);
-                Console.WriteLine("Updated UserID: " + ID + "'s realName to: " + realName);
+                conn.Open();
                 updateRealName.ExecuteNonQuery();
+                Console.WriteLine("Updated UserID: " + ID + "'s realName to: " + realName);
+                conn.Close();
             }
             else
             {
@@ -114,11 +116,12 @@ namespace ChaunceyDiscordBot
                 insertNewUserID.Parameters.AddWithValue("@POINTS", 0);
                 insertNewUserID.Parameters.AddWithValue("@REAL", realName);
                 insertNewUserID.Parameters.AddWithValue("@NICK", "");
-
+                conn.Open();
                 Console.WriteLine("Adding New User ID: User ID and Real Name added to database");
                 insertNewUserID.ExecuteNonQuery();
+                conn.Close();
             }
-            conn.Close();
+            //conn.Close();
         }
 
         //Stores the users current Discord Nickname seperate from their actual discord ID
@@ -134,8 +137,9 @@ namespace ChaunceyDiscordBot
             {
                 updateNickName.Parameters.AddWithValue("@ID", ID);
                 updateNickName.Parameters.AddWithValue("@NICK", nickName);
-                Console.WriteLine("Updates UserID: " + ID + "'s nickName to: " + nickName);
+                conn.Open();
                 updateNickName.ExecuteNonQuery();
+                Console.WriteLine("Updates UserID: " + ID + "'s nickName to: " + nickName);
             }
             else
             {
@@ -143,7 +147,7 @@ namespace ChaunceyDiscordBot
                 insertNewUserID.Parameters.AddWithValue("@POINTS", 0);
                 insertNewUserID.Parameters.AddWithValue("@REAL", "");
                 insertNewUserID.Parameters.AddWithValue("@NICK", nickName);
-
+                conn.Open();
                 Console.WriteLine("Adding New User ID: User ID and nickName added to database");
                 insertNewUserID.ExecuteNonQuery();
             }

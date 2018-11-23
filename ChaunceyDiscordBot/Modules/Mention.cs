@@ -54,7 +54,7 @@ namespace ChaunceyDiscordBot.Modules
             
         }
 
-        [Command("gam")]
+        [Command("game")]
         public async Task pingGamPlayers()
         {
             conn.Open();

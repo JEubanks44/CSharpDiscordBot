@@ -66,7 +66,6 @@ namespace ChaunceyDiscordBot.Modules
 
             Random rand = new Random();
             int r2 = rand.Next(0, choices.Length);
-
             embed.WithTitle("I pick this: ");
             embed.WithDescription(choices[r2]);
             embed.WithColor(red);
@@ -126,7 +125,7 @@ namespace ChaunceyDiscordBot.Modules
             }
             if (times > 5)
             {
-                await Context.Channel.SendMessageAsync("Nice Try Asshole: Spam set to 1");
+                await Context.Channel.SendMessageAsync("");
                 times = 1;
             }
             if (times <= 5)

@@ -18,6 +18,26 @@ namespace ChaunceyDiscordBot.Modules
         LastfmClient lfmClient = new LastfmClient(Utilities.GetAlert("LASTFM_API_KEY"), Utilities.GetAlert("LASTFM_API_SECRET"));
         EmbedBuilder embed = new EmbedBuilder();
         TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
+        public async Task checkLevel(string ID)
+        {
+            bool levelUp = ds.checkLevelUp(ID);
+
+            if (levelUp)
+            {
+                embed.WithTitle("LEVEL UP!");
+                embed.WithDescription(Context.User.Username.ToString() + " is now level " + ds.getLevel(ID));
+                embed.WithColor(255, 0, 0);
+                embed.WithThumbnailUrl(Context.User.GetAvatarUrl());
+                await Context.Channel.SendMessageAsync("", false, embed);
+            }
+            else
+            {
+                return;
+            }
+
+        }
+
         [Command("album")]
         public async Task lastFMInfo([Remainder]string info)
         {
@@ -45,6 +65,11 @@ namespace ChaunceyDiscordBot.Modules
 
 
                 await Context.Channel.SendMessageAsync("", false, embed);
+
+                string userID = Context.User.Id.ToString();
+                ds.addPoints(userID, 5);
+                await checkLevel(userID);
+
             }
             catch(Exception e)
             {
@@ -63,15 +88,20 @@ namespace ChaunceyDiscordBot.Modules
                 var lastFMResults = lfmClient.Artist.GetInfoAsync(artist).Result.Content;
                 textToSend += lastFMResults.Bio.Summary.Substring(0, lastFMResults.Bio.Summary.LastIndexOf("<a"));
                 textToSend += "\n\nLastFM: " + lastFMResults.Url;
+                
                 embed.WithTitle("Info for " + artist);
                 embed.WithImageUrl(lastFMResults.MainImage.ExtraLarge.AbsoluteUri);
                 embed.WithDescription(textToSend);
                 await Context.Channel.SendMessageAsync("", false, embed);
+                string userID = Context.User.Id.ToString();
+                ds.addPoints(userID, 5);
+                await checkLevel(userID);
             }
             catch(Exception e)
             {
                 await Context.Channel.SendMessageAsync("Artist not Found");
             }
+            
         }
 
         [Command("lastfm")]
@@ -98,6 +128,10 @@ namespace ChaunceyDiscordBot.Modules
                 embed.WithImageUrl(userInfo.Avatar.ExtraLarge.AbsoluteUri);
                 embed.WithDescription(textToSend);
                 await Context.Channel.SendMessageAsync("", false, embed);
+
+                string userID = Context.User.Id.ToString();
+                ds.addPoints(userID, 5);
+                await checkLevel(userID);
             }
             catch(Exception e)
             {
