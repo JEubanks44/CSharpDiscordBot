@@ -27,7 +27,7 @@ namespace ChaunceyDiscordBot
         }
         static void Main(string[] args)
         => new Program().StartAsync().GetAwaiter().GetResult(); //Start Async funtion instead of main
-
+        
         public async Task StartAsync() //Begins the main loop of the program
         {
             var services = ConfigureServices();

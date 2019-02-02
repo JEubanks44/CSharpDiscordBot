@@ -15,6 +15,7 @@ namespace ChaunceyDiscordBot
     //Not Yet Implemented or Completed
     public class  DataStorage : ModuleBase<SocketCommandContext>
     {
+        
         static SqlConnection conn = new SqlConnection("Data Source=JOSEPHSPC\\JESERVER;Initial Catalog=DiscordBot;Integrated Security=True"); //Creates a hardcoded connection the database on my local machine
         public DataStorage()
         {
@@ -238,7 +239,8 @@ namespace ChaunceyDiscordBot
             }
             int userPoints = getPoints(ID);
             int userLevel = getLevel(ID);
-            double pointRequirement = (((userLevel - 1) * 20) + ((userLevel - 1) * 20 * 1.10 ));
+            Console.WriteLine(userLevel);
+            double pointRequirement = 100*(2^(userLevel));
             
             if(userPoints >= pointRequirement)
             {
@@ -258,18 +260,18 @@ namespace ChaunceyDiscordBot
             int levelNew = getLevel(ID) + 1;
             conn.Open();
             SqlCommand updateLevel = new SqlCommand("UPDATE UserInfo SET level = @LEVEL WHERE userID = @ID");
-            SqlCommand updatePoints = new SqlCommand("UPDATE UserInfo SET points = @POINTS WHERE userID = @ID");
+            //SqlCommand updatePoints = new SqlCommand("UPDATE UserInfo SET points = @POINTS WHERE userID = @ID");
             updateLevel.Connection = conn;
-            updatePoints.Connection = conn;
+            //updatePoints.Connection = conn;
 
             updateLevel.Parameters.AddWithValue("@LEVEL", levelNew);
             updateLevel.Parameters.AddWithValue("@ID", ID);
 
-            updatePoints.Parameters.AddWithValue("@POINTS", 0);
-            updatePoints.Parameters.AddWithValue("@ID", ID);
+            //updatePoints.Parameters.AddWithValue("@POINTS", 0);
+            //updatePoints.Parameters.AddWithValue("@ID", ID);
 
             updateLevel.ExecuteNonQuery();
-            updatePoints.ExecuteNonQuery();
+            //updatePoints.ExecuteNonQuery();
             conn.Close();
         }
 

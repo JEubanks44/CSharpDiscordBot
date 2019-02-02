@@ -12,7 +12,6 @@ using System.Net.NetworkInformation;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
 using Discord.Audio;
-
 //Misc bot Commands
 namespace ChaunceyDiscordBot.Modules
 {
@@ -25,8 +24,10 @@ namespace ChaunceyDiscordBot.Modules
         DataStorage ds = new DataStorage();
         SpeechSynthesizer synth = new SpeechSynthesizer();
 
+        
         public async Task checkLevel(string ID)
         {
+            
             bool levelUp = ds.checkLevelUp(ID);
 
             if(levelUp)
@@ -69,7 +70,6 @@ namespace ChaunceyDiscordBot.Modules
             embed.WithTitle("I pick this: ");
             embed.WithDescription(choices[r2]);
             embed.WithColor(red);
-            embed.WithThumbnailUrl(Context.User.GetAvatarUrl());
 
             await Context.Channel.SendMessageAsync("", false, embed);
         }
@@ -86,6 +86,7 @@ namespace ChaunceyDiscordBot.Modules
             string spamDesc = "<!spam>: The bot repeats the message the requested amount of times (Format: message times)";
             string setIDDesc = "<!setID>: Adds users ID to the database";
             string setRealNameDesc = "<!setRealName>: Adds users real name to the database (Allows use of the !ping command with that name)";
+            string setSteamIDDesc = "<$setSteamID>: Adds your steam ID allowing steam functionality";
             string pingDesc = "<!ping>: pings the users using real names set with !setRealName";
             string steamDesc = "<!steam>: Retrieves your steam profile info (Only if you have set Steam ID with <!setSteamID>)";
 
@@ -97,6 +98,7 @@ namespace ChaunceyDiscordBot.Modules
             helpList.Add(spamDesc);
             helpList.Add(setIDDesc);
             helpList.Add(setRealNameDesc);
+            helpList.Add(setSteamIDDesc);
             helpList.Add(pingDesc);
             foreach (string item in helpList)
             {
@@ -150,11 +152,55 @@ namespace ChaunceyDiscordBot.Modules
         }   
 
         [Command("Talk")]
-        public async Task Talk()
+        public async Task Talk([Remainder]string message)
         {
             synth.SelectVoiceByHints(VoiceGender.Male);
-            synth.Speak("Bot Speech Test, Hello");
+            synth.Speak(message);
         }
 
+        [Command("Board")]
+        public async Task LeaderBoard()
+        {
+            var members = new List<leaderBoardUser>();
+            
+            string finalList = "";
+            
+            foreach (var user in Context.Guild.Users)
+            {
+                DataStorage ds = new DataStorage();
+                int level = ds.getLevel(user.Id.ToString());
+                int XP = ds.getPoints(user.Id.ToString());
+                Console.WriteLine(level + " " + XP);
+                if(ds.checkIDExists(user.Id.ToString()) && !user.IsBot)
+                {
+                    leaderBoardUser lbu = new leaderBoardUser();
+                    lbu.level = level;
+                    lbu.name = user.Username;
+                    lbu.xp = XP;
+                    members.Add(lbu);
+                }
+            }
+
+            members.Sort((a, b) => a.xp.CompareTo(b.xp));
+            members.Sort((a, b) => a.level.CompareTo(b.level));
+            
+            for(int i = 0; i < 10; i++)
+            {
+                string desc;
+                desc = i + 1 +") " + members[members.Count - 1 - i].name + " Level: " + members[members.Count - 1 - i].level + " XP: " + members[members.Count - 1 - i].xp;
+                finalList += desc + "\n";
+            }
+            embed.WithTitle("LEADERBOARD");
+            embed.WithDescription(finalList);
+            embed.WithColor(red);
+            await Context.Channel.SendMessageAsync("", false, embed);
+        }
     }
+
+    struct leaderBoardUser
+    {
+        public int level;
+        public int xp;
+        public string name;
+    };
 }

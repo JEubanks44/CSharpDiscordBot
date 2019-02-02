@@ -46,7 +46,7 @@ namespace ChaunceyDiscordBot.Modules
                 string[] infoArray = info.Split('|');
                 string artist = textInfo.ToTitleCase(infoArray[0].Trim());
                 string album = textInfo.ToTitleCase(infoArray[1].Trim());
-                string userName = ds.getLastFM(Context.User.Id.ToString());
+                //string userName = ds.getLastFM(Context.User.Id.ToString());
                 var lastFMResults = lfmClient.Album.GetInfoAsync(artist, album).Result.Content;
                 string textToSend = "\nTrack List: \n";
                 foreach(var name in lastFMResults.Tracks)
@@ -73,7 +73,7 @@ namespace ChaunceyDiscordBot.Modules
             }
             catch(Exception e)
             {
-                await Context.Channel.SendMessageAsync("Album not found!!!");
+                //await Context.Channel.SendMessageAsync("Album not found!!!");
             }
         }
 

@@ -149,7 +149,7 @@ namespace ChaunceyDiscordBot
                                     {
                                         embed.WithImageUrl(imageURL);
                                         
-                                        await channel.SendMessageAsync("", false, embed);
+                                        //await channel.SendMessageAsync("", false, embed);
                                     }
                                     
 

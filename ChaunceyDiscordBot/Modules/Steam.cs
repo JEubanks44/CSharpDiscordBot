@@ -137,7 +137,7 @@ namespace ChaunceyDiscordBot.Modules
 
             var cookieSteam = cookieClient.Steam.RecentGamesAsync(steamID);
             var gameList = cookieSteam.Result.RecentGames.GamesList;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < gameList.Count; i++)
             {
                 string gameID = gameList[i].AppId.ToString();
                 string gameLogo = gameList[i].LogoUrl;
